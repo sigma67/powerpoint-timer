@@ -29,13 +29,13 @@ namespace PowerPointTimer.Model
         private void TimerTick(object _, ElapsedEventArgs __)
         {
             string timeText = GetShapeText();
-            if(TimeSpan.TryParseExact(timeText, "mm\\:ss",
+            if(TimeSpan.TryParseExact(timeText, "hh\\:mm\\:ss",
                 CultureInfo.InvariantCulture, out TimeSpan time))
             {
                 if (time.TotalSeconds == 0)
                     return;
                 time = time - OneSecond;
-                SetShapeText(time.ToString("mm\\:ss"));
+                SetShapeText(time.ToString("hh\\:mm\\:ss"));
             } else
             {
                 SetShapeText($"Invalid format: {_duration}");
